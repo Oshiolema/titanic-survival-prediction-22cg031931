@@ -20,7 +20,16 @@ class TitanicSurvivalModel:
         self.embarked_encoder = LabelEncoder()
         self.feature_names = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']
 
-    def load_data(self, file_path='data/titanic.csv'):
+    def load_data(self, file_path=None):
+        """
+        Load and preprocess Titanic data
+        Returns: X (features), y (survival labels)
+        """
+        if file_path is None:
+            # Use absolute path
+            import os
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            file_path = os.path.join(base_dir, 'data', 'titanic.csv')
         """
         Load and preprocess Titanic data
         Returns: X (features), y (survival labels)
